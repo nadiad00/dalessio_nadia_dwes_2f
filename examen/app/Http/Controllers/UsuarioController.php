@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
 use Illuminate\Http\Request;
+use App\Models\Usuario;
 
 class UsuarioController extends Controller
 {
+    //
     public function procesarNombre(Request $request) {
         $nombre = $request->input('nombre');
         $apellido = $request->input('apellido');
         $dni = $request->input('dni');
 
         $usuario = new Usuario($nombre, $apellido, $dni);
+        $nombreCompleto = $usuario->obtenerNombreCompleto($nombre, $apellido, $dni);
         
-        echo $request->input('nombre');
-        echo "aa";
+        return response()->json([
+            'nombrecompleto' => $nombreCompleto
+        ], 200);
     }
 }

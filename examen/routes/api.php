@@ -19,5 +19,4 @@ use App\Http\Controllers\UsuarioController;
 //     return $request->user();
 // });
 
-
-Route::get("/", [UsuarioController::class, "procesarNombre"]);
+Route::get("/get", [UsuarioController::class, "procesarNombre"]);
